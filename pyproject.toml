@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=79.0"]
+requires = ["setuptools>=75.0"]
 build-backend = "setuptools.build_meta"
 
 
@@ -11,12 +11,12 @@ authors = [
     { name="Evgeny Gorelik", email="evgeny.gorelik@gt-arc.com" }
 ]
 dependencies = [
-    "numpy<=1.26.4",
-    "pillow<=10.2.0",
-    "tqdm<=4.67.3",
-    "scipy<=1.17.1",
-    "matplotlib-inline<=0.1.7",
-    "opencv-python<=4.11.0.86",
+    "numpy==1.26.4",
+    "pillow==10.2.0",
+    "tqdm==4.67.3",
+    "scipy==1.17.1",
+    "matplotlib-inline==0.1.7",
+    "opencv-python==4.11.0.86",
 ]
 readme = "README.md"
 requires-python = ">=3.8"
