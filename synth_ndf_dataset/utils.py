@@ -1,5 +1,6 @@
 import cv2
 import re
+import numpy as np
 
 def to_rgba(img):
     if img.ndim == 2:
@@ -65,3 +66,12 @@ def _bbox_label_map(raw):
                 out[i] = v
     return out
 
+
+def project_points(pts_world, camera_intrinsics, world_to_camera):
+    pts_h = np.concatenate([pts_world, np.ones((pts_world.shape[0], 1))], axis=1)
+    cam_pts = (world_to_camera @ pts_h.T).T[:, :3]      # p_cam = M @ p_world (OpenCV)
+    z = cam_pts[:, 2].copy()
+    z[z == 0] = 1e-6
+    uv = (camera_intrinsics @ cam_pts.T).T
+    uv = uv[:, :2] / uv[:, 2:3]
+    return uv, cam_pts[:, 2]

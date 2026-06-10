@@ -5,6 +5,7 @@ import numpy as np
 from synth_ndf_dataset.utils import _passenger_key, _bbox_label_map
 from synth_ndf_dataset.bbox2d import BBox2D
 from synth_ndf_dataset.bbox3d import BBox3D
+from synth_ndf_dataset.skeleton import Skeleton
 
 class CameraSample:
     def __init__(self, rgb_path, depth_path, bbox_2d_path, bbox_3d_path,
@@ -14,7 +15,7 @@ class CameraSample:
         self.depth = self._load_depth(depth_path)
         self.bbox_2d = self._load_bbox_2d(bbox_2d_path)
         self.bbox_3d = self._load_bbox_3d(bbox_3d_path)
-        self.skeleton = self._load_skeleton(skeleton_json_path)
+        self.skeletons = self._load_skeleton(skeleton_json_path)
         self.person_masks, self.seg_mapping = self._load_segmentation(
             seg_png_path, palette_person_colors
         )
@@ -62,9 +63,10 @@ class CameraSample:
 
     def _load_skeleton(self, path):
         if not os.path.exists(path):
-            return None
+            return []
         with open(path) as f:
-            return json.load(f)
+            content = json.load(f)
+        return [Skeleton(c) for c in content.get("skeletons", [])]
 
     def _load_segmentation(self, png_path, palette_person_colors):
         if not os.path.exists(png_path) or not palette_person_colors:
