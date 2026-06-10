@@ -4,8 +4,8 @@ import json
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-from ndf_dataset_synth.camera import Camera
-from ndf_dataset_synth.sample import Sample
+from synth_ndf_dataset.camera import Camera
+from synth_ndf_dataset.sample import Sample
 
 class Dataset:
     def __init__(self, dataset_path):

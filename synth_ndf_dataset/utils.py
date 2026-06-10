@@ -1,7 +1,6 @@
 import cv2
 import re
 
-
 def to_rgba(img):
     if img.ndim == 2:
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGBA)

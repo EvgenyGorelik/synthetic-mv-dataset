@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "ndf-dataset-synth"
+name = "synth-ndf-dataset"
 version = "0.1.0"
-description = "A Python package with main functions inside the ndf_dataset_synth directory."
+description = "A Python package with main functions inside the synth_ndf_dataset directory."
 authors = [
     { name="Evgeny Gorelik", email="evgeny.gorelik@gt-arc.com" }
 ]
@@ -31,4 +31,4 @@ classifiers = [
 Homepage = "https://github.com/EvgenyGorelik/ndf-dataset-synth"
 
 [tool.setuptools]
-package-dir = {"ndf_dataset_synth" = "ndf_dataset_synth"}
+package-dir = {"synth_ndf_dataset" = "synth_ndf_dataset"}

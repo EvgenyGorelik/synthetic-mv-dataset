@@ -2,9 +2,9 @@ import os
 import json
 import cv2
 import numpy as np
-from ndf_dataset_synth.utils import _passenger_key, _bbox_label_map
-from ndf_dataset_synth.bbox2d import BBox2D
-from ndf_dataset_synth.bbox3d import BBox3D
+from synth_ndf_dataset.utils import _passenger_key, _bbox_label_map
+from synth_ndf_dataset.bbox2d import BBox2D
+from synth_ndf_dataset.bbox3d import BBox3D
 
 class CameraSample:
     def __init__(self, rgb_path, depth_path, bbox_2d_path, bbox_3d_path,

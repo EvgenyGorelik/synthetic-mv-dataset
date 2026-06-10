@@ -1,7 +1,7 @@
 import re
 import os
 
-from ndf_dataset_synth.camera_sample import CameraSample
+from synth_ndf_dataset.camera_sample import CameraSample
 
 
 class Sample:
