@@ -1,0 +1,23 @@
+import numpy as np
+
+class BBox3D:
+    def __init__(self, semantic_id, x_min, y_min, z_min, x_max, y_max, z_max,
+                 transform, occlusion_ratio):
+        self.semantic_id = semantic_id
+        self.x_min, self.y_min, self.z_min = x_min, y_min, z_min
+        self.x_max, self.y_max, self.z_max = x_max, y_max, z_max
+        self.transform = np.array(transform).T
+        self.occlusion_ratio = occlusion_ratio
+
+    def corners(self):
+        return np.array([
+            [self.x_min, self.y_min, self.z_min], [self.x_min, self.y_min, self.z_max],
+            [self.x_min, self.y_max, self.z_min], [self.x_min, self.y_max, self.z_max],
+            [self.x_max, self.y_min, self.z_min], [self.x_max, self.y_min, self.z_max],
+            [self.x_max, self.y_max, self.z_min], [self.x_max, self.y_max, self.z_max],
+        ])
+
+    def world_corners(self):
+        ch = np.concatenate([self.corners(), np.ones((8, 1))], axis=1)
+        return (self.transform @ ch.T).T[:, :3]
+
