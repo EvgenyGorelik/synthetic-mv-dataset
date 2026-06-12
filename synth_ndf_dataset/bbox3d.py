@@ -24,7 +24,7 @@ class BBox3D:
 
     @property
     def rotation(self):
-        return R.from_matrix(self.transform[:3, :3]).as_quat(scalar_first=False)
+        return R.from_matrix(self.transform[:3, :3]).as_quat()
 
     @property
     def translation(self):
