@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.transform import Rotation as R
 
 class BBox3D:
     def __init__(self, semantic_id, x_min, y_min, z_min, x_max, y_max, z_max,
@@ -21,3 +22,14 @@ class BBox3D:
         ch = np.concatenate([self.corners(), np.ones((8, 1))], axis=1)
         return (self.transform @ ch.T).T[:, :3]
 
+    @property
+    def rotation(self):
+        return R.from_matrix(self.transform[:3, :3]).as_quat()
+
+    @property
+    def translation(self):
+        return self.transform[:3, 3]
+    
+    @property
+    def size(self):
+        return np.array([self.x_max - self.x_min, self.y_max - self.y_min, self.z_max - self.z_min])
