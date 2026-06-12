@@ -33,3 +33,7 @@ class BBox3D:
     @property
     def size(self):
         return np.array([self.x_max - self.x_min, self.y_max - self.y_min, self.z_max - self.z_min])
+    
+    @property
+    def scale_factor(self):
+        return np.sqrt(self.transform[0, 0]**2 + self.transform[1, 0]**2)
