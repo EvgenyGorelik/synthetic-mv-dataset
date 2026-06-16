@@ -10,6 +10,10 @@ class WorldSample:
                  skeleton_json_path):
         self.bbox_3d = self._load_bbox_3d(bbox_3d_path)
         self.skeletons = self._load_skeleton(skeleton_json_path)
+        self.paths = {
+            "bbox_3d": bbox_3d_path,
+            "skeleton": skeleton_json_path,
+        }
 
 
     def _load_bbox_3d(self, path):

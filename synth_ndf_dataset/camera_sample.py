@@ -14,6 +14,12 @@ class CameraSample:
         self.person_masks, self.seg_mapping = self._load_segmentation(
             seg_png_path, palette_person_colors
         )
+        self.paths = {
+            "rgb": rgb_path,
+            "depth": depth_path,
+            "bbox_2d": bbox_2d_path,
+            "segmentation": seg_png_path,
+        }
 
     def _load_depth(self, path):
         if path is None or not os.path.exists(path):
