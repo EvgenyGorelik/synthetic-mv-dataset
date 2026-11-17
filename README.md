@@ -3,5 +3,5 @@
 ## Install
 
 ```
-pip install git+https://gitlab.dai-labor.de/non-driving-functions/dataset-generation/synthetic-ndf-dataset.git
+pip install git+https://github.com/EvgenyGorelik/synthetic-mv-dataset.git
 ```
